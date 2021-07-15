@@ -1,6 +1,6 @@
 <template lang="html">
     <section id="hero" class="container-fluid p-3">
-      <h2 class="text-center mb-3 sticky-top bg-light">E-Store Section</h2>
+      <h2 class="text-center mb-3 bg-light">E-Store Section</h2>
       <div class="row g-3">
         <div class="col-md-9 container">
           <div class="row g-3 container">

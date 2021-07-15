@@ -1,5 +1,5 @@
 <template lang="html">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow">
     <div class="container-fluid">
       <router-link class="navbar-brand me-auto" to="/">E-Wallet</router-link>
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
