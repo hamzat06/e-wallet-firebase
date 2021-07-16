@@ -36,7 +36,7 @@ export default {
   font-weight: bold;
 }
 
-.btn-general:hover {
+.btn:hover {
   transition-duration: .5s;
 }
 </style>

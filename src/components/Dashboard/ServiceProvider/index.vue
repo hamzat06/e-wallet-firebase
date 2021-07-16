@@ -1,12 +1,12 @@
 <template lang="html">
-  <div class="products">
+  <div class="service-provider">
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Products'
+  name: 'ServiceProvider'
 }
 </script>
 

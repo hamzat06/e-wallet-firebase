@@ -1,24 +1,24 @@
 <template lang="html">
-  <form class="row g-3">
+  <form class="row g-3" @submit.prevent="registerStudent">
     <div class="text-center">
       <h3>Student Sign-up</h3>
       <p>Are you are Service Provider? <router-link to="/auth/register/service-provider">Register here</router-link></p>
     </div>
     <div class="col-md-6">
       <label class="form-label">First Name</label>
-      <input type="text" class="form-control" placeholder="Joshua" required>
+      <input type="text" class="form-control" placeholder="Joshua" required v-model="firstName">
     </div>
     <div class="col-md-6">
       <label class="form-label">Last Name</label>
-      <input type="text" class="form-control" placeholder="Olufemi" required>
+      <input type="text" class="form-control" placeholder="Olufemi" required v-model="lastName">
     </div>
     <div class="col-md-6">
       <label class="form-label">Matric Number</label>
-      <input type="text" class="form-control" placeholder="Matric No." required>
+      <input type="text" class="form-control" placeholder="Matric No." required v-model="matricNo">
     </div>
     <div class="col-md-6">
       <label class="form-label">Level</label>
-      <select class="form-select" aria-label="Default select example">
+      <select class="form-select" aria-label="Default select example" @change="selectLevel($event)">
         <option selected disabled>Choose Level</option>
         <option v-for="level in levels" :key="level.index" :value="level">
           {{ level + ' Level'}}
@@ -27,28 +27,28 @@
     </div>
     <div class="col-md-6">
       <label class="form-label">Course</label>
-      <select class="form-select" aria-label="Default select example">
+      <select class="form-select" aria-label="Default select example" @change="selectCourse($event)">
         <option selected disabled>Choose Course</option>
-        <option v-for="course in courses" :key="course.index">
+        <option v-for="course in courses" :key="course.index" :value="course">
           {{ course }}
         </option>
       </select>
     </div>
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" placeholder="joshuaolufemi@email.com" required>
+      <input type="email" class="form-control" placeholder="joshuaolufemi@email.com" required v-model="email">
     </div>
     <div class="col-md-6">
       <label class="form-label">Password</label>
-      <input type="password" class="form-control" placeholder="password" required>
+      <input type="password" class="form-control" placeholder="password" required v-model="password">
     </div>
     <div class="col-md-6">
       <label class="form-label">Confirm Password</label>
-      <input type="password" class="form-control" placeholder="confirm password" required>
+      <input type="password" class="form-control" placeholder="confirm password" required v-model="confirmPassword">
     </div>
     <div class="col-12">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <input class="form-check-input" type="checkbox" id="gridCheck" v-model="checked" required>
         <label class="form-check-label" for="gridCheck">
           I agree to the <a href="#">Terms</a> & <a href="#">Conditions</a> of E-Wallet. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </label>
@@ -65,6 +65,10 @@
 export default {
   name: 'Student',
   data: () => ({
+    firstName: '',
+    lastName: '',
+    matricNo: '',
+    checked: false,
     levels: ['100', '200', '300', '400', '500'],
     selectedLevel: '',
     courses: [
@@ -93,8 +97,39 @@ export default {
       'INDUSTRIAL PHYSICS WITH ELECTRONICS AND IT APPLICATION',
       'INDUSTRIAL PHYSICS'
     ],
-    selected: ''
-  })
+    selectedCourse: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  }),
+
+  methods: {
+    selectLevel (event) {
+      this.selectedLevel = event.target.value
+    },
+    selectCourse (event) {
+      this.selectedCourse = event.target.value
+    },
+    registerStudent () {
+      const data = {
+        firstname: this.firstName,
+        lastname: this.lastName,
+        matric: this.matricNo,
+        level: this.selectedLevel,
+        course: this.selectedCourse,
+        password: this.password,
+        role: 'student'
+      }
+      if (data.password.length > 8){
+        if (data.password === data.confirmPassword){
+          console.log(data)
+        }
+      }
+      else {
+        alert('Password does not match')
+      }
+    }
+  }
 }
 </script>
 

@@ -41,13 +41,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
-nav * {
-  font-weight: bold;
-}
-
 @media only screen and (min-width: 1024px) {
   .nav-link {
     padding: 0 1.5rem !important;
+  }
+
+  .nav-link:hover {
+    border-bottom: 1px solid #333;
+    transition: .5s ease-in-out;
   }
 }
 </style>

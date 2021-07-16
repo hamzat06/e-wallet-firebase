@@ -3,7 +3,10 @@
     <Navbar/>
     <div class="container-fluid p-0 d-flex">
       <Sidebar/>
-      <router-view/>
+      <div class="container d-flex justify-content-center">
+        <router-view/>
+      </div>
+
     </div>
   </section>
 </template>

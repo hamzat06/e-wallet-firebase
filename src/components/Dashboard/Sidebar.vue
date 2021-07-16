@@ -16,7 +16,22 @@
         <router-link class="list-group-item list-group-item-action" id="list-home-list" to="/dashboard/student/wallet" role="" aria-controls="list-home">Wallet</router-link>
         <router-link class="list-group-item list-group-item-action" id="list-profile-list" to="/dashboard/student/orders" role="" aria-controls="list-profile">Orders</router-link>
         <router-link class="list-group-item list-group-item-action" id="list-profile-list" to="/shop" role="tab" aria-controls="list-profile">Shop</router-link>
-        <router-link class="list-group-item list-group-item-action" id="list-messages-list" to="/settings" role="tab" aria-controls="list-messages">Settings</router-link>
+      </div>
+
+      <div class="list-group mt-5 shadow" id="list-tab">
+        <router-link class="list-group-item list-group-item-action" id="list-home-list" to="/dashboard/service-provider/wallet" role="" aria-controls="list-home">Wallet</router-link>
+        <router-link class="list-group-item list-group-item-action" id="list-profile-list" to="/dashboard/service-provider/products" aria-controls="list-profile">Products</router-link>
+        <router-link class="list-group-item list-group-item-action" id="list-messages-list" to="/settings" role="" aria-controls="list-messages">Orders</router-link>
+      </div>
+
+      <div class="list-group mt-5 shadow" id="list-tab">
+        <router-link class="list-group-item list-group-item-action" id="list-home-list" to="/dashboard/agent/wallet" role="" aria-controls="list-home">Wallet</router-link>
+      </div>
+
+      <div class="list-group mt-5 shadow" id="list-tab">
+        <router-link class="list-group-item list-group-item-action" id="list-home-list" to="/dashboard/admin/wallet" role="" aria-controls="list-home">Agents</router-link>
+        <router-link class="list-group-item list-group-item-action" id="list-profile-list" to="/dashboard/admin/Products" role="" aria-controls="list-profile">Students</router-link>
+        <router-link class="list-group-item list-group-item-action" id="list-messages-list" to="/settings" role="tab" aria-controls="list-messages">Service Providers</router-link>
       </div>
     </div>
   </div>

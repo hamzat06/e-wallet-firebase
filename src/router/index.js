@@ -17,38 +17,112 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/dashboard/student'
+        redirect: 'student'
       },
       {
-        path: '/dashboard/student',
+        path: 'student',
         name: 'Student',
         component: () => import('../components/Dashboard/Student'),
         children: [
           {
             path: '',
-            redirect: '/dashboard/student/wallet'
+            redirect: 'wallet'
           },
           {
-            path: '/dashboard/student/wallet',
+            path: 'wallet',
             name: 'Wallet',
             component: () => import('../components/Dashboard/Student/Wallet'),
             children: [
               {
-                path: '/dashboard/student/wallet/transfer-funds',
+                path: 'transfer-funds',
                 name: 'TransferFunds',
                 component: () => import('../components/Dashboard/Student/Wallet/TransferFunds')
               },
               {
-                path: '/dashboard/student/wallet/withdraw-funds',
+                path: 'withdraw-funds',
                 name: 'WithdrawFunds',
                 component: () => import('../components/Dashboard/Student/Wallet/WithdrawFunds')
               }
             ]
           },
           {
-            path: '/dashboard/student/orders',
+            path: 'orders',
             name: 'Orders',
             component: () => import('../components/Dashboard/Student/Orders')
+          }
+        ]
+      },
+      {
+        path: 'service-provider',
+        name: 'ServiceProvider',
+        component: () => import('../components/Dashboard/ServiceProvider'),
+        children: [
+          {
+            path: '',
+            redirect: 'products'
+          },
+          {
+            path: 'products',
+            name: 'Products',
+            component: () => import('../components/Dashboard/ServiceProvider/Products'),
+            children: [
+              {
+                path: '',
+                redirect: 'product-list'
+              },
+              {
+                path: 'product-list',
+                name: 'ProductList',
+                component: () => import('../components/Dashboard/ServiceProvider/Products/ProductList')
+              },
+              {
+                path: 'add-product',
+                name: 'AddProduct',
+                component: () => import('../components/Dashboard/ServiceProvider/Products/AddProduct')
+              },
+              {
+                path: 'edit-product',
+                name: 'EditProduct',
+                component: () => import('../components/Dashboard/ServiceProvider/Products/EditProduct')
+              }
+            ]
+          },
+          {
+            path: 'orders',
+            name: 'Orders',
+            component: () => import('../components/Dashboard/ServiceProvider/Orders')
+          }
+        ]
+      },
+      {
+        path: 'agent',
+        name: 'Agent',
+        component: () => import('../components/Dashboard/Agent'),
+        children: [
+          {
+            path: 'fund-student',
+            name: 'FundStudent',
+            component: () => import('../components/Dashboard/Agent/FundStudent')
+          },
+          {
+            path: 'fund-agent',
+            name: 'FundAgent',
+            component: () => import('../components/Dashboard/Agent/FundAgent'),
+            children: [
+              {
+                path: '',
+                redirect: 'fund-other-agent'
+              },
+              {
+                path: 'fund-other-agent',
+                name: 'OtherAgent',
+                component: () => import('../components/Dashboard/Agent/FundAgent/OtherAgent')
+              },{
+                path: 'fund-self',
+                name: 'Self',
+                component: () => import('../components/Dashboard/Agent/FundAgent/Self')
+              }
+            ]
           }
         ]
       }
