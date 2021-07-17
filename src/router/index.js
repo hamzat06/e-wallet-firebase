@@ -125,6 +125,44 @@ const routes = [
             ]
           }
         ]
+      },
+      {
+        path: 'admin',
+        name: 'Admin',
+        component: () => import('../components/Dashboard/Admin'),
+        children: [
+          {
+            path: 'agents',
+            name: 'Agents',
+            component: () => import('../components/Dashboard/Admin/Agents'),
+            children: [
+              {
+                path: '',
+                redirect: 'all-agents'
+              },
+              {
+                path: 'all-agents',
+                name: 'AllAgents',
+                component: () => import('../components/Dashboard/Admin/Agents/AllAgents')
+              },
+              {
+                path: 'create-agent-account',
+                name: 'CreateAgentAccount',
+                component: () => import('../components/Dashboard/Admin/Agents/CreateAgentAccount')
+              }
+            ]
+          },
+          {
+            path: 'service-providers',
+            name: 'ServiceProvider',
+            component: () => import('../components/Dashboard/Admin/ServiceProviders')
+          },
+          {
+            path: 'students',
+            name: 'Students',
+            component: () => import('../components/Dashboard/Admin/Students')
+          }
+        ]
       }
     ]
   },

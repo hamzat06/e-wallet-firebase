@@ -29,9 +29,9 @@
               <label>Net weight</label>
               <input type="number" placeholder="e.g KG" class="form-control">
             </div>
-            <div class="d-flex justify-content-between">
-              <router-link class="btn btn-secondary btn-general-alt shadow-sm mx-1" to="/dashboard/service-provider/products/">Cancel</router-link>
-              <button class="btn btn-primary btn-general-alt shadow-sm ml-auto">Confirm</button>
+            <div class="text-center">
+              <router-link class="btn btn-secondary btn-general shadow-sm me-2" to="/dashboard/service-provider/products/">Cancel</router-link>
+              <button class="btn btn-primary btn-general shadow-sm">Confirm</button>
             </div>
           </form>
         </div>
