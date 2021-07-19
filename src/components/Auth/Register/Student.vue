@@ -40,28 +40,30 @@
     </div>
     <div class="col-md-6">
       <label class="form-label">Password</label>
-      <input type="password" class="form-control" placeholder="password" required v-model="password">
+      <input type="password" class="form-control" placeholder="Password" required v-model="password">
     </div>
     <div class="col-md-6">
       <label class="form-label">Confirm Password</label>
-      <input type="password" class="form-control" placeholder="confirm password" required v-model="confirmPassword">
+      <input type="password" class="form-control" placeholder="Confirm password" required v-model="confirmPassword">
     </div>
     <div class="col-12">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="gridCheck" v-model="checked" required>
         <label class="form-check-label" for="gridCheck">
-          I agree to the <a href="#">Terms</a> & <a href="#">Conditions</a> of E-Wallet. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Check here to indicate that you have read the <a href="#">Terms</a> & <a href="#">Conditions</a> of Cu-Wallet.
         </label>
       </div>
     </div>
     <div class="col-12 text-center">
-      <button type="submit" class="btn btn-outline-dark btn-general mb-3">Register</button>
+      <button type="submit" class="btn btn-outline-dark btn-general mb-3" @click="registerStudent">Register</button>
       <p>Already have an account? <router-link to="/auth/login">Sign in</router-link></p>
     </div>
   </form>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'Student',
   data: () => ({
@@ -100,7 +102,9 @@ export default {
     selectedCourse: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    loading: false,
+    disabled: false
   }),
 
   methods: {
@@ -110,24 +114,42 @@ export default {
     selectCourse (event) {
       this.selectedCourse = event.target.value
     },
-    registerStudent () {
-      const data = {
-        firstname: this.firstName,
-        lastname: this.lastName,
-        matric: this.matricNo,
-        level: this.selectedLevel,
-        course: this.selectedCourse,
-        password: this.password,
-        role: 'student'
-      }
-      if (data.password.length > 8){
-        if (data.password === data.confirmPassword){
-          console.log(data)
+    async registerStudent () {
+      try {
+        const data = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+          matric: this.matricNo,
+          level: this.selectedLevel,
+          course: this.selectedCourse,
+          department: "science",
+          // role: 'student'
         }
+        if (data.password.length >= 6){
+          if (data.password === data.confirmPassword){
+            console.log(data)
+          }
+          else {
+            alert('Password does not match')
+          }
+        }
+
+        let result = await axios.post("http://localhost:3000/student/auth/signup", data)
+
+        console.log(result)
+        //I added this
+        this.$router.push('/auth/login')
+
+
+
+      } catch(e){
+console.log(e);
       }
-      else {
-        alert('Password does not match')
-      }
+
+
     }
   }
 }
