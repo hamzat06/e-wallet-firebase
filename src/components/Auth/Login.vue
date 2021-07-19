@@ -46,9 +46,10 @@ export default {
         }
         let result = await axios.post("http://localhost:3000/user/auth/login", data)
 
-        let user
-        let token
+        var user
+        var token
 
+        await console.log(result.data.user)
         if (result.data.student !== undefined) {
           user = result.data.student
           token = user.token
@@ -56,9 +57,9 @@ export default {
           this.$store.dispatch('setUser', user)
           this.$router.push('/dashboard/student')
         }
-        else if (result.data.user !== undefined) {
+        else if (result.data.provider !== undefined) {
           user = result.data.provider
-          token = user.token
+          token = user.user.token
           localStorage.setItem('token', token)
           this.$store.dispatch('setUser', user)
           this.$router.push('/dashboard/serviceprovider')
@@ -71,7 +72,6 @@ export default {
           this.$router.push('/dashboard/' + user.role)
         }
 
-        await console.log(result.data)
 
         this.loading = false
         this.disabled = false
